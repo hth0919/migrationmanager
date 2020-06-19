@@ -1,0 +1,7 @@
+apiVersion: keti.migration/v1
+kind: ControllerRevision
+metadata:
+  name: example-controllerrevision
+spec:
+  # Add fields here
+  size: 3

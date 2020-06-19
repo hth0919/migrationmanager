@@ -1,0 +1,17 @@
+apiVersion: keti.migration/v1
+kind: ReplicaSet
+metadata:
+  name: name
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: app
+  template:
+    metadata:
+      labels:
+        type: app
+    spec:
+      containers:
+      - name: name
+        image: hth0919/ticker:v0.0.4

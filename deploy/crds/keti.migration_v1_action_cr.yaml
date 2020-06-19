@@ -1,0 +1,7 @@
+apiVersion: keti.migration/v1
+kind: Action
+metadata:
+  name: example-action
+spec:
+  # Add fields here
+  size: 3

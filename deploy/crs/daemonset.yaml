@@ -1,0 +1,18 @@
+apiVersion: keti.migration/v1
+kind: DaemonSet
+metadata:
+  name: my-daemonset
+  labels:
+    key: value
+spec:
+  template:
+    metadata:
+      labels:
+        name: my-daemonset-container
+    spec:
+      containers:
+      - name: name
+        image: hth0919/ticker:v0.0.4
+  selector:
+    matchLabels:
+      name: my-daemonset-container 
