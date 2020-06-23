@@ -64,6 +64,8 @@ func (spc *realStatefulPodControl) CreateStatefulPod(set *ketiv1.StatefulSet, po
 		spc.recordPodEvent("create", set, pod, err)
 		return err
 	}
+	pod.Labels["keti.checkpoint.type"] = "Statefulset"
+	pod.Labels["keti.checkpoint.name"] = pod.Name
 	// If we created the PVCs attempt to create the Pod
 	_, err := spc.client.Pods(set.Namespace).Create(pod)
 	// sink already exists errors

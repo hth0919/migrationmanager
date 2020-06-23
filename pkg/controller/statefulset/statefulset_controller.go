@@ -87,8 +87,6 @@ func newReconciler(mgr manager.Manager) reconcile.Reconciler {
 	if err != nil {
 		klog.Errorln(err)
 	}
-	klog.Infoln(componentConfig)
-	klog.Infoln(componentConfig.Generic.MinResyncPeriod)
 
 	informerFactory := informer.NewSharedInformerFactory(kclient, client, ResyncPeriod(componentConfig)())
 	kubeinformerFactory := kubeinformer.NewSharedInformerFactory(kclient, ResyncPeriod(componentConfig)())

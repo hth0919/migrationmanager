@@ -192,7 +192,8 @@ func podTypeMetaInit(cr *ketiv1.Pod) *ketiv1.Pod{
 }
 
 func podObjectMetaInit(cr *ketiv1.Pod) *ketiv1.Pod{
-	if cr.Labels["keti.checkpoint.type"] == "" {
+	cr.Labels = make(map[string]string)
+	if len(cr.Labels["keti.checkpoint.type"]) == 0 {
 		cr.Labels["keti.checkpoint.type"] = "Pod"
 		cr.Labels["keti.checkpoint.name"] = cr.Name
 	}

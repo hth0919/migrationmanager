@@ -3,5 +3,8 @@ kind: Action
 metadata:
   name: example-action
 spec:
-  # Add fields here
-  size: 3
+  purpose: migration
+  node: cloudedge2-worker2
+  podname: pod-test
+  destinationnode: cloudedge2-worker1
+  namespace: default

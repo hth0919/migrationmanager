@@ -862,6 +862,8 @@ func NewPod(ds *ketiv1.DaemonSet, nodeName string) *ketiv1.Pod {
 	newPod := &ketiv1.Pod{Spec: ds.Spec.Template.Spec, ObjectMeta: ds.Spec.Template.ObjectMeta}
 	newPod.Namespace = ds.Namespace
 	newPod.Spec.NodeName = nodeName
+	newPod.Labels["keti.checkpoint.type"] = "Daemonset"
+	newPod.Labels["keti.checkpoint.name"] = newPod.Name
 
 	// Added default tolerations for DaemonSet pods.
 	daemonutil.AddOrUpdateDaemonPodTolerations(&newPod.Spec)
