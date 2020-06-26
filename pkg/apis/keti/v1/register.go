@@ -52,6 +52,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&PodList{},
 		&PodTemplate{},
 		&PodTemplateList{},
+		&PodLogOptions{},
+		&PodExecOptions{},
 		&Action{},
 		&ActionList{},
 	)
