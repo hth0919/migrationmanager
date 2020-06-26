@@ -28,6 +28,7 @@ type PodInterface interface {
 	List(opts metav1.ListOptions) (*ketiv1.PodList, error)
 	Watch(opts metav1.ListOptions) (watch.Interface, error)
 	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *ketiv1.Pod, err error)
+	GetLogs(name string, opts *ketiv1.PodLogOptions) *rest.Request
 }
 
 // pods implements PodInterface
@@ -169,4 +170,7 @@ func (c *pods) Patch(name string, pt types.PatchType, data []byte, subresources 
 		Do().
 		Into(result)
 	return
+}
+func (c *pods) GetLogs(name string, opts *ketiv1.PodLogOptions) *rest.Request {
+	return c.client.Get().Namespace(c.ns).Name(name).Resource("pods").SubResource("log").VersionedParams(opts, scheme.ParameterCodec)
 }
